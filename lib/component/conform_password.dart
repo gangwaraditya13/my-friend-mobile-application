@@ -25,8 +25,8 @@ class ConformPassword extends StatelessWidget {
     void onPressDone() async {
       String stringPasswordController = passwordController.text.toString();
       if (stringPasswordController == password.toString()) {
-        var response = await userRepo.updateUser(userName.toString(),
-            controllerGmail, password.toString(), controllerUserName);
+        var response = await userRepo.updateUser(
+            controllerGmail, controllerUserName);
 
         if (response.statusCode == 200) {
           Navigator.pushReplacement(

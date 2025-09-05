@@ -39,7 +39,7 @@ class _ProfilePhotoOnLongPressState extends State<ProfilePhotoOnLongPress> {
   void onPressSave() async {
     if (ImageFile != null) {
       var responseCloud = await widget.userRepo.uploadImage(
-          ImageFile!, widget.userName.toString(), widget.password.toString());
+          ImageFile!);
       if (responseCloud != null) {
         String newPostImageUrl = responseCloud.url.toString();
         String publicId = responseCloud.publicId.toString();
@@ -48,9 +48,7 @@ class _ProfilePhotoOnLongPressState extends State<ProfilePhotoOnLongPress> {
           var response = await widget.userRepo!.updateProfilePhoto(
               widget.oldPhotoURL.toString(),
               newPostImageUrl,
-              publicId,
-              widget.userName.toString(),
-              widget.password.toString());
+              publicId,);
           if (response.statusCode == 200) {
             Navigator.pop(context);
           } else {

@@ -108,7 +108,7 @@ class _AddNewPostState extends State<AddNewPost> {
 
     if (imageFile != null) {
       var responseCloud = await widget.userRepo
-          .uploadImage(imageFile!, widget.userName, widget.password);
+          .uploadImage(imageFile!);
       if (responseCloud != null) {
         postImageUrl = responseCloud.url.toString();
         publicId = responseCloud.publicId.toString();

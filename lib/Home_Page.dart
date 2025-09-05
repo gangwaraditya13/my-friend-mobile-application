@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context) => AboutUser(
             userName: widget.userName,
             password: widget.password,
-            userRepo: UserRepo(),
+            userRepo: widget.userRepo,
           ),
         ));
   }
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: FutureBuilder(
           future: widget.userRepo
-              .userInfo(widget.userName.toString(), widget.password.toString()),
+              .userInfo(),
           builder: (context, AsyncSnapshot<requestUser?> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();

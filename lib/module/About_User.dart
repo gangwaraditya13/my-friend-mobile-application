@@ -45,7 +45,7 @@ class _AboutUserState extends State<AboutUser> {
         actions: [IconButton(onPressed: onPressEdit, icon: Icon(Icons.edit))],
       ),
       body: FutureBuilder(
-        future: widget.userRepo.userInfo(widget.userName, widget.password),
+        future: widget.userRepo.userInfo(),
         builder: (context, AsyncSnapshot<requestUser?> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return AboutUserBody();
@@ -62,8 +62,6 @@ class _AboutUserState extends State<AboutUser> {
               gmail: gamil = snapshot.data!.gmailId.toString(),
               profilPhoto: photoURL == null || photoURL.trim().isEmpty || photoURL.trim().toLowerCase() == 'null'  ?"https://res.cloudinary.com/dx3wtw7pf/image/upload/v1756753309/def_profile_pic_nu8tlc.png" : snapshot.data!.profilePhotoURL.toString(),
               userRepo: widget.userRepo,
-              LoginControlleruserName: widget.userName,
-              LoginControllerPassword: widget.password,
             );
           }
         },

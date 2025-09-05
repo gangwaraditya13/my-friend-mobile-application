@@ -7,8 +7,6 @@ import '../component/delete_account.dart';
 
 class AboutUserBody extends StatelessWidget {
   String userName;
-  String? LoginControlleruserName;
-  String? LoginControllerPassword;
   String gmail;
   String profilPhoto;
   UserRepo? userRepo;
@@ -19,9 +17,7 @@ class AboutUserBody extends StatelessWidget {
       this.gmail = '-- --@--',
       this.profilPhoto =
           "https://res.cloudinary.com/dx3wtw7pf/image/upload/v1756753309/def_profile_pic_nu8tlc.png",
-      this.userRepo,
-      this.LoginControlleruserName,
-      this.LoginControllerPassword});
+      this.userRepo,});
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +48,6 @@ class AboutUserBody extends StatelessWidget {
               context: context,
               builder: (context) => ChangePassword(
                 userRepo: userRepo!,
-                LoginControlleruserName: LoginControlleruserName.toString(),
-                LoginControllerPassword: LoginControllerPassword.toString(),
               ),
             ),
             title: Text("Change Password"),
@@ -64,8 +58,6 @@ class AboutUserBody extends StatelessWidget {
               context: context,
               builder: (context) => DeleteAccount(
                 userRepo: userRepo!,
-                LoginControlleruserName: LoginControlleruserName.toString(),
-                LoginControllerPassword: LoginControllerPassword.toString(),
               ),
             ),
             title: Text("Delect Account"),

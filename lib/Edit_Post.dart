@@ -139,7 +139,7 @@ class _EditPostState extends State<EditPost> {
 
       if (imageFile != null) {
         final responseCloud = await widget.userRepo.uploadImage(
-            imageFile!, widget.userName.toString(), widget.password.toString());
+            imageFile!);
         if (responseCloud != null) {
           photoURL = responseCloud.url.toString();
           productId = responseCloud.publicId.toString();

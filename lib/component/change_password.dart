@@ -5,13 +5,9 @@ import 'package:my_friend/repos/user_repo.dart';
 
 class ChangePassword extends StatelessWidget {
   UserRepo userRepo;
-  String LoginControlleruserName;
-  String LoginControllerPassword;
   ChangePassword(
       {super.key,
-      required this.userRepo,
-      required this.LoginControlleruserName,
-      required this.LoginControllerPassword});
+      required this.userRepo,});
   @override
   Widget build(BuildContext context) {
     TextEditingController oldPasswordController = TextEditingController();
@@ -29,9 +25,7 @@ class ChangePassword extends StatelessWidget {
       if (stringNewPasswordController == stringReNewPasswordController) {
         var response = await userRepo.updatePassword(
             stringOldPasswordController,
-            stringReNewPasswordController,
-            LoginControlleruserName,
-            LoginControllerPassword);
+            stringReNewPasswordController,);
 
         if (response.statusCode == 200) {
           Navigator.pushReplacement(

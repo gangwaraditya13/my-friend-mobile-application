@@ -13,13 +13,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late final UserRepo _userRepo = UserRepo();
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _userNamerController = TextEditingController();
   final String _hintUser = "Username";
   final TextEditingController _passwordController = TextEditingController();
   final String _hintPassword = "Password";
+  late final UserRepo _userRepo;
   bool _loginStatus = true;
   String errorTextValue = "'~_-'";
 
@@ -33,7 +33,8 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState!.validate()) {
       String userName = _userNamerController.text.toString();
       String password = _passwordController.text.toString();
-      var responce = await _userRepo.loginUser(userName, password);
+      _userRepo = UserRepo(userName: userName,password: password);
+      var responce = await _userRepo.loginUser();
 
       if (responce.statusCode == 200) {
         _loginStatus = true;

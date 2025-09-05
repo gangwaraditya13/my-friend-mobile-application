@@ -6,13 +6,9 @@ import 'User_Detail_Input.dart';
 
 class DeleteAccount extends StatelessWidget {
   UserRepo userRepo;
-  String? LoginControlleruserName;
-  String? LoginControllerPassword;
   DeleteAccount(
       {super.key,
-      required this.userRepo,
-      this.LoginControllerPassword,
-      this.LoginControlleruserName});
+      required this.userRepo,});
   @override
   Widget build(BuildContext context) {
     TextEditingController PasswordController = TextEditingController();
@@ -20,9 +16,7 @@ class DeleteAccount extends StatelessWidget {
     void onPressDelete() async {
       String stringPasswordController = PasswordController.text.toString();
       var response = await userRepo.deleteUser(
-          stringPasswordController,
-          LoginControlleruserName.toString(),
-          LoginControllerPassword.toString());
+          stringPasswordController);
 
       if (response.statusCode == 200) {
         Navigator.pushReplacement(
