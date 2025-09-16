@@ -92,12 +92,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   hint: hintGmail,
                   focusedBorderColor: Colors.orangeAccent,
                   Validator: (value) {
-                    if (RegExp(r'^[a-zA-Z0-9._%+-]+@gmail\.com$')
-                        .hasMatch(value.toString())) {
-                      return "Invalid email";
-                    } else {
-                      return null;
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your email";
                     }
+                    if (!RegExp(r'^[a-z0-9._%+-]+@gmail\.com$').hasMatch(value)) {
+                      return "Invalid Gmail address";
+                    }
+                    return null;
                   },
                 ),
                 SizedBox.square(
